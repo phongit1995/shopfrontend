@@ -9,13 +9,15 @@ import './styles.css'
 const Header = () => {
     const history = useHistory();
     const [tab, setTab] = React.useState(0)
-    const [user,setUser] = React.useState({})
+    const [user,setUser] = React.useState({});
+    
     const onSetTab = (e) => {
         setTab(e)
     }
     useEffect(()=>{
         let data = localStorage.getItem("USER");
         data= JSON.parse(data);
+        console.log(data);
         setUser({...data})
     },[])
     const LogOutUser = ()=>{
@@ -36,21 +38,25 @@ const Header = () => {
                                     <span className="name">Home</span>
                                 </div>
                             </div>
-                            <div
-                                className={`item ${tab === 1 ? "active" : ""}`}
-                                onClick={() => onSetTab(1)}
-                            >
-                                <div className="wrapper-item">
-                                    <div>
-                                        <span className="name">Nhân Viên</span>
-                                        <BsFillCaretDownFill className="icon-drop"></BsFillCaretDownFill>
+                            {
+                                    user.roleId==1?
+                                    <div
+                                    className={`item ${tab === 1 ? "active" : ""}`}
+                                    onClick={() => onSetTab(1)}
+                                    >
+                                    <div className="wrapper-item">
+                                        <div>
+                                            <span className="name">Nhân Viên</span>
+                                            <BsFillCaretDownFill className="icon-drop"></BsFillCaretDownFill>
+                                        </div>
+                                        <div className="list-item">
+                                            <p><Link to="/employee">Danh sách nhân viên</Link> </p>
+                                            <p><Link to="/attendances/history">Lịch sử chấm công nv</Link></p>
+                                        </div>
                                     </div>
-                                    <div className="list-item">
-                                        <p><Link to="/employee">Danh sách nhân viên</Link> </p>
-                                        <p><Link to="/attendances/history">Lịch sử chấm công nv</Link></p>
-                                    </div>
-                                </div>
-                            </div>
+                                </div>:null
+                            }
+                            
                             <div
                                 className={`item ${tab === 2 ? "active" : ""}`}
                                 onClick={() => onSetTab(2)}

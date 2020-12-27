@@ -10,6 +10,7 @@ import AddEmployee from './Employee/addEmployee';
 import AttendancesAdd from './Attendances/AttendancesAdd'
 import AttendancesEdit from './Attendances/AttendancesEdit'
 import AttendancesHistory from './Attendances/AttendancesHistory';
+import AttendancesUser from './Attendances/AttendancesHistoryUser';
 import ForGotConfirm from './User/ForgotConfirm';
 import Login from './User/Login';
 import ForGotPassWord from './User/Forgot';
@@ -31,6 +32,7 @@ export default function RouterApp (){
                 <Route path="/login" exact component={Login} />
                 <Route path="/forgot-password" exact component={ForGotPassWord} />
                 <Route path="/forgot-confirm" exact component={ForGotConfirm} />
+                <Route path="/attendances/user" exact component={AttendancesUser} />
             </Router>
             <ToastContainer
                 position="top-right"

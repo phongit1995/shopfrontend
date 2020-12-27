@@ -12,3 +12,6 @@ export const GetListAttendances=()=>{
 export const deleteAttendaces=(id)=>{
     return axios.delete(`/attendances/${id}`)
 }
+export const checkOutAttendances=(id)=>{
+    return axios.post(`/attendances/checkOut/${id}`)
+}

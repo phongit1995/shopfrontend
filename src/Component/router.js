@@ -10,11 +10,13 @@ import AddEmployee from './Employee/addEmployee';
 import AttendancesAdd from './Attendances/AttendancesAdd'
 import AttendancesEdit from './Attendances/AttendancesEdit'
 import AttendancesHistory from './Attendances/AttendancesHistory';
-import AuthorCompoent from './Common/AuthorComponent';
+import ForGotConfirm from './User/ForgotConfirm';
 import Login from './User/Login';
+import ForGotPassWord from './User/Forgot';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function RouterApp (){
     return(
         <div>
@@ -27,6 +29,8 @@ export default function RouterApp (){
                 <Route path="/attendances/edit" exact component={AttendancesEdit} />
                 <Route path="/attendances/history" exact component={AttendancesHistory} />
                 <Route path="/login" exact component={Login} />
+                <Route path="/forgot-password" exact component={ForGotPassWord} />
+                <Route path="/forgot-confirm" exact component={ForGotConfirm} />
             </Router>
             <ToastContainer
                 position="top-right"

@@ -16,18 +16,8 @@ export default function(){
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const OnSubmitLogin = ()=>{
-        console.log(email);
-        console.log(password);
-        LoginUser(email,password).then(result=>{
-           if(result.data.message=="ERROR"){
-            toast.error("Tên Đăng Nhập Hoặc Tài Khoản Chưa Chính Xác")
-           }
-           else {
-                toast.success("Đăng Nhập Thành Công!!!")
-                localStorage.setItem("USER",JSON.stringify(result.data.data));
-                history.replace("/")
-           }
-        })
+        toast.success("Vui Lòng Kiểm tra email!!")
+        history.replace("/login")
     }
     return(
         <div className="ContainerLogin">
@@ -41,18 +31,15 @@ export default function(){
                     <p>QUẢN LÝ DOANH NGHIỆP</p>
                 </div>
                 <div style={{marginBottom:"5px"}}>
-                    <div style={{fontSize:"12px",color:"#000000",marginBottom:"5px"}}>Email / Mã nhân viên *</div>
+                    <div style={{fontSize:"12px",color:"#000000",marginBottom:"5px"}}>Nhập Mã Bảo Mật *</div>
                     <div><input type="text"  className="InputStyle" value={email} onChange={(e)=>setEmail(e.target.value) }/></div>
                 </div>
                 <div style={{marginBottom:"10px"}}>
-                    <div style={{fontSize:"12px",color:"#000000",marginBottom:"5px"}}>Mật khẩu *</div>
+                    <div style={{fontSize:"12px",color:"#000000",marginBottom:"5px"}}>Mật Khẩu Mới *</div>
                     <div><input type="password" className="InputStyle"value={password} onChange={(e)=>setPassword(e.target.value) } /></div>
                 </div>
                 <div className="text-center" style={{marginTop:"20px"}}>
-                    <span className="LoginButton" onClick={OnSubmitLogin}>Đăng Nhập</span>
-                </div>
-                <div className="text-center" style={{marginTop:"20px"}}>
-                    <Link to="/forgot-password" style={{color:"#06A1F8"}}>Quên mật khẩu?</Link>
+                    <span className="LoginButton" onClick={OnSubmitLogin}>Xác Nhận</span>
                 </div>
             </div>
         </div>

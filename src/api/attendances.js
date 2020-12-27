@@ -9,3 +9,6 @@ export const CreateCheckInAttendances=(user,shift,note)=>{
 export const GetListAttendances=()=>{
     return axios.get("/attendances");
 }
+export const deleteAttendaces=(id)=>{
+    return axios.delete(`/attendances/${id}`)
+}

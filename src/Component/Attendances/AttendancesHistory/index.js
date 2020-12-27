@@ -1,17 +1,28 @@
 import React ,{useState,useEffect} from 'react';
 import Header from './../../Common/Header';
 import {Table} from 'react-bootstrap';
-import {GetListAttendances} from './../../../api/attendances';
+import {GetListAttendances,deleteAttendaces} from './../../../api/attendances';
+import { toast } from 'react-toastify';
 import moment from 'moment'
 import './index.css'
 export default function(){
     const [listData,setListData] = useState([]);
     useEffect(()=>{
         GetListAttendances().then(result=>{
-            console.log(result);
             setListData(result.data);
         })
     },[])
+    const _deleteAttendances =(id)=>{
+        if(window.confirm("Bạn Có Thực Sự Muốn Xóa Không")){
+            deleteAttendaces(id).then(result=>{
+                GetListAttendances().then(result=>{
+                    setListData(result.data);
+                })
+                toast.success("Xóa Thành Công!!!")
+            })
+            
+        }
+    }
     const ShowListData =()=>{
         return listData.map((item,index)=>{
             return(
@@ -23,8 +34,8 @@ export default function(){
                     <td>{ShowShipData(item.shift)}</td>
                     <td>{item.user.email}</td>
                     <td>
-                        <span style={{color:"#09A6FF",marginRight:"10px",cursor:"pointer"}} > Sửa</span>
-                        <span style={{color:"#C4C4C4",cursor:"pointer"}} > Xóa</span>
+                        {/* <span style={{color:"#09A6FF",marginRight:"10px",cursor:"pointer"}} > Sửa</span> */}
+                        <span style={{color:"#C4C4C4",cursor:"pointer"}} onClick={()=>_deleteAttendances(item._id)} > Xóa</span>
                     </td>
                 </tr>
             )
